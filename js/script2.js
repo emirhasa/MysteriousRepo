@@ -237,63 +237,146 @@
 // console.log(allowed);
 
 // /****************************************************** */
+// //making a self-sufficient question factory with help of a function
+// /****************************************************** */
+// (function() {
+//     function getQuestion() {
+
+//         var LoopInitiated = false;
+//         var Question = function(question, questionAnswers, correctAnswer) {
+//             this.question = question;
+//             this.questionAnswers = questionAnswers;
+//             this.correctAnswer = correctAnswer;
+//         }
+
+//         question1 = new Question('Is Javascript a cool language?', ['0: Yes', '1: No'], 0);
+//         question2 = new Question('The fox says... ', ['0: Moo', '1: Meow', '2: None of this', '3: Rawr'], 2);
+//         question3 = new Question('Was the moon landing faked?', ['0: Probably not', '1: Hell no', '2: Hell yes!', '3: The moon\'s made of cheese'], 3);
+//         question4 = new Question('What was Javascript\'s original name?', ['0: JavaLang', '1: Livescript', '2: RNG', '3: Typescript'], 1);
+//         question5 = new Question('Do you like Quentin Tarantino?', ['0: Yes', '1: Yes', '2: Yes'], -1);
+
+//         questionsArray = {
+//             questions : [question1, question2, question3, question4, question5],
+//             selectRandomQuestion : function() {
+//                 var randomNumber = Math.floor(Math.random() * this.questions.length);
+//                 return this.questions[randomNumber];
+//             }
+//         }
+
+//         var randomQuestion = questionsArray.selectRandomQuestion();
+
+
+//         return function checkAnswer() {
+            
+//             for(var i=0; i < randomQuestion.questionAnswers.length; i++) {
+//                 console.log(randomQuestion.questionAnswers[i]);
+//             }
+
+//             var answer = prompt(randomQuestion.question);
+
+//             if(randomQuestion.correctAnswer == answer ||  randomQuestion.correctAnswer == -1) console.log('Correct!'); else console.log('Incorrect!');
+//         }
+
+//     }
+
+//     var QuestionFactory = function() {
+//         this.getNewQuestion = function() {
+//             this.currentQuestion = getQuestion();
+//             return this.currentQuestion;
+//         }
+//         this.askQuestion = function() {
+//             this.currentQuestion();
+//         }
+//         this.currentQuestion = null;
+//     }
+
+//     var myQuestionFactory = new QuestionFactory;
+//     var question = myQuestionFactory.getNewQuestion();
+//     question();
+//     //possible to get the same question even though it's "new" as there are only 5 questions in the pool // technically it's always possible
+//     myQuestionFactory.getNewQuestion();
+//     myQuestionFactory.askQuestion();
+// })();
+
+//ofc we dont need to put the question list in the function itself etc. 
+
+// /****************************************************** */
 // //Practice
 // /****************************************************** */
 
-function getQuestion() {
+(function() {
 
-    var Question = function(question, questionAnswers, correctAnswer) {
+    var QuestionP = function(question, answers, correct) {
         this.question = question;
-        this.questionAnswers = questionAnswers;
-        this.correctAnswer = correctAnswer;
+        this.answers = answers;
+        this.correct = correct;
     }
 
-    question1 = new Question('Is Javascript a cool language?', ['0: Yes', '1: No'], 0);
-    question2 = new Question('The fox says... ', ['0: Moo', '1: Meow', '2: None of this', '3: Rawr'], 2);
-    question3 = new Question('Was the moon landing faked?', ['0: Probably not', '1: Hell no', '2: Hell yes!', '3: The moon\'s made of cheese'], 3);
-    question4 = new Question('What was Javascript\'s original name?', ['0: JavaLang', '1: Livescript', '2: RNG', '3: Typescript'], 1);
-    question5 = new Question('Do you like Quentin Tarantino?', ['0: Yes', '1: Yes', '2: Yes'], -1);
-
-    questionsArray = {
-        questions : [question1, question2, question3, question4, question5],
-        selectRandomQuestion : function() {
-            var randomNumber = Math.floor(Math.random() * this.questions.length);
-            return this.questions[randomNumber];
+    QuestionP.prototype.checkAnswer = function(answer, callback) {
+        if(answer !== 'exit') {
+            if(this.correct === parseInt(answer)) {
+                console.log('Correct.');
+                var score = callback(true);
+            } else {
+                console.log('Incorrect.');
+                var score = callback(false);
+            }
         }
     }
 
-    var randomQuestion = questionsArray.selectRandomQuestion();
+    QuestionP.prototype.displayQuestion = function() {
+        console.log('------------------------');
+        console.log(this.question);
+        for(var i = 0; i < this.answers.length; i++) {
+            console.log(i + ': ' + this.answers[i]);
+        }
+    }
 
-    return function checkAnswer() {
-    
-        for(var i=0; i < randomQuestion.questionAnswers.length; i++) {
-            console.log(randomQuestion.questionAnswers[i]);
+    var newQuestion1 = new QuestionP('What is that in the corner?', ['A ring', 'The One ring', 'A fox'], 2);
+    var newQuestion2 = new QuestionP('What is that on the ceiling?', ['Spider', 'Mad Max', 'Atoms'], 2);
+    var newQuestion3 = new QuestionP('What is that on the floor?', ['Missed spot', 'Gravity', 'Morgan Freeman'], 0);
+
+    var keepScore = (function() {
+
+        var incorrectAnswers = 0;
+        var correctAnswers = 0;
+        var totalAnswers = 0;
+
+        return function updateScore(correct) {
+            totalAnswers++;
+            if(correct) {
+                correctAnswers++;
+            } else {
+                incorrectAnswers++;
+            }
+            console.log('------------------------');
+            console.log('Score - Incorrect = ' + incorrectAnswers + ' Correct = ' + correctAnswers + ' Answered questions = ' + totalAnswers); 
         }
 
+    })();
+
+    var questions = [newQuestion1, newQuestion2, newQuestion3];
+
+    function askQuestion() {
+
+        var random = Math.floor(Math.random() * 3);
+        var randomQuestion = questions[random];
+
+        randomQuestion.displayQuestion();
         var answer = prompt(randomQuestion.question);
-        if(randomQuestion.correctAnswer == answer ||  randomQuestion.correctAnswer == -1) console.log('Correct!'); else console.log('Incorrect!');
-    }
-}
 
-var QuestionFactory = function() {
-    this.getNewQuestion = function() {
-        this.currentQuestion = getQuestion();
-        return this.currentQuestion;
-    }
-    this.askQuestion = function() {
-        this.currentQuestion();
-    }
-    this.currentQuestion = null;
-}
+        if(answer !== 'exit') {
+            randomQuestion.checkAnswer(answer, keepScore);
+            askQuestion();
+        }
 
-var myQuestionFactory = new QuestionFactory;
-var question = myQuestionFactory.getNewQuestion();
-question();
-question();
+    }
 
-//possible to get the same question even though it's "new" as there are only 5 questions in the pool // technically it's always possible
-myQuestionFactory.getNewQuestion();
-myQuestionFactory.askQuestion();
+    askQuestion();
+
+})();
+
+
 
 
 

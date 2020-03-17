@@ -155,130 +155,127 @@ GAME RULES:
 // + add some features to the game
 /******************************************************************************** */
 
-// var scores;
-// var activePlayer; 
-// var roundScore;
-// var gameActive = false;
-// var maxScore = 100;
+var scores;
+var activePlayer; 
+var roundScore;
+var gameActive = false;
+var maxScore = 100;
 
-// startNewGame();
+startNewGame();
 
-// function startNewGame() {
-//     gameActive = true;
-//     scores = [0,0];
-//     activePlayer = roundScore = previousRoll = 0; //activePlayer0 is actually Player1
-//     hideDice();
-//     document.querySelector('#name-0').textContent = 'Player 1';
-//     document.querySelector('#name-1').textContent = 'Player 2';
-//     document.querySelector('.player-' + activePlayer + '-panel').classList.add('active');
-//     updateScore();
-// }
+function startNewGame() {
+    gameActive = true;
+    scores = [0,0];
+    activePlayer = roundScore = previousRoll = 0; //activePlayer0 is actually Player1
+    hideDice();
+    document.querySelector('#name-0').textContent = 'Player 1';
+    document.querySelector('#name-1').textContent = 'Player 2';
+    document.querySelector('.player-' + activePlayer + '-panel').classList.add('active');
+    updateScore();
+}
 
-// function hideDice() {
-//     var dice = document.getElementsByClassName('dice');
-//     for(var i =0; i < dice.length; i++) {
-//         dice[i].style.display = 'none';
-//     }
-// }
+function hideDice() {
+    var dice = document.getElementsByClassName('dice');
+    for(var i =0; i < dice.length; i++) {
+        dice[i].style.display = 'none';
+    }
+}
 
-// function showDice() {
-//     var dice = document.getElementsByClassName('dice');
-//     for(var i =0; i < dice.length; i++) {
-//         dice[i].style.display = 'block';
-//     }
-// }
+function showDice() {
+    var dice = document.getElementsByClassName('dice');
+    for(var i =0; i < dice.length; i++) {
+        dice[i].style.display = 'block';
+    }
+}
 
-// function rollDice() {
-//     if(gameActive) {
-//         showDice();
-//         var rollResult = Math.floor(Math.random()*6) + 1;
-//         var rollResult2 = Math.floor(Math.random()*6) + 1;
-//         document.getElementsByClassName('die-1')[0].src='dice-' + rollResult + '.png';
-//         document.getElementsByClassName('die-2')[0].src='dice-' + rollResult2 + '.png';        
-//         if(rollResult === 6 && previousRoll === 6) {
-//             scores[activePlayer] = 0;
-//             switchTurn();
-//             return;
-//         } 
-//         if(rollResult === 1 || rollResult2 === 1) {
-//             if(rollResult === 1 && rollResult2 === 1) {
-//                 switchTurn();
-//                 return;
-//             }   
-//             roundScore = 0;
-//             updateScore();
-//             return;
-//         } 
-//         roundScore += rollResult + rollResult2;
-//         updateScore();
-//     } else {
-//         alert("Start a new game!");
-//     }
-// };
+function rollDice() {
+    if(gameActive) {
+        showDice();
+        var rollResult = Math.floor(Math.random()*6) + 1;
+        var rollResult2 = Math.floor(Math.random()*6) + 1;
+        document.getElementsByClassName('die-1')[0].src='dice-' + rollResult + '.png';
+        document.getElementsByClassName('die-2')[0].src='dice-' + rollResult2 + '.png';        
+        if(rollResult === 6 && previousRoll === 6) {
+            scores[activePlayer] = 0;
+            switchTurn();
+            return;
+        } 
+        if(rollResult === 1 || rollResult2 === 1) {
+            if(rollResult === 1 && rollResult2 === 1) {
+                switchTurn();
+                return;
+            }   
+            roundScore = 0;
+            updateScore();
+            return;
+        } 
+        roundScore += rollResult + rollResult2;
+        updateScore();
+    } else {
+        alert("Start a new game!");
+    }
+};
 
-// function switchTurn() {
-//     hideDice();
-//     roundScore = 0;
-//     updateScore();
-//     document.querySelector('.player-' + activePlayer + '-panel').classList.toggle('active');
-//     activePlayer === 0 ? activePlayer = 1 : activePlayer = 0;
-//     document.querySelector('.player-' + activePlayer + '-panel').classList.toggle('active');
-// }
+function switchTurn() {
+    hideDice();
+    roundScore = 0;
+    updateScore();
+    document.querySelector('.player-' + activePlayer + '-panel').classList.toggle('active');
+    activePlayer === 0 ? activePlayer = 1 : activePlayer = 0;
+    document.querySelector('.player-' + activePlayer + '-panel').classList.toggle('active');
+}
 
-// function updateScore() {
-//     document.querySelector('#score-0').textContent = scores[0];
-//     document.querySelector('#score-1').textContent = scores[1];
-//     document.querySelector('#current-' + activePlayer).textContent = roundScore;
-// }
+function updateScore() {
+    document.querySelector('#score-0').textContent = scores[0];
+    document.querySelector('#score-1').textContent = scores[1];
+    document.querySelector('#current-' + activePlayer).textContent = roundScore;
+}
 
-// function hold() {
-//     if(gameActive) {
-//         var newScore = scores[activePlayer] += roundScore;
-//         roundScore = 0;
-//         updateScore();
-//         if(scores[activePlayer] < maxScore) {
-//             hideDice();
-//             switchTurn();
-//         } 
-//         else 
-//         {
-//             finishGame();
-//         }
-//     } else {
-//         alert("Start a new game first!");
-//     }
-// }
+function hold() {
+    if(gameActive) {
+        var newScore = scores[activePlayer] += roundScore;
+        roundScore = 0;
+        updateScore();
+        if(scores[activePlayer] < maxScore) {
+            hideDice();
+            switchTurn();
+        } 
+        else 
+        {
+            finishGame();
+        }
+    } else {
+        alert("Start a new game first!");
+    }
+}
 
-// function finishGame() {
-//     gameActive = false;
-//     hideDice();
-//     document.querySelector('#name-' + activePlayer).textContent = 'Winner!';
-//     var winnerPlayerPanelDOM = document.querySelector('.player-' + activePlayer + '-panel');
-//     winnerPlayerPanelDOM.classList.remove('active');
-//     winnerPlayerPanelDOM.classList.add('winner');
-// }
+function finishGame() {
+    gameActive = false;
+    hideDice();
+    document.querySelector('#name-' + activePlayer).textContent = 'Winner!';
+    var winnerPlayerPanelDOM = document.querySelector('.player-' + activePlayer + '-panel');
+    winnerPlayerPanelDOM.classList.remove('active');
+    winnerPlayerPanelDOM.classList.add('winner');
+}
 
-// document.getElementsByClassName('btn-new')[0].addEventListener('click', startNewGame);
+document.getElementsByClassName('btn-new')[0].addEventListener('click', startNewGame);
 
-// document.querySelector('.btn-roll').addEventListener('click', rollDice);
+document.querySelector('.btn-roll').addEventListener('click', rollDice);
 
-// //get element by... is a bit faster than query selector.
-// document.getElementsByClassName('btn-hold')[0].addEventListener('click', hold);
+//get element by... is a bit faster than query selector.
+document.getElementsByClassName('btn-hold')[0].addEventListener('click', hold);
 
-// document.querySelector('.btn-set-score').addEventListener('click', function() {
-//     var scoreInput = document.querySelector('#score-input');
-//     var newScoreValue = scoreInput.value;
-//     if(!isNaN(newScoreValue)) {
-//         maxScore = newScoreValue;
-//         document.querySelector('#current-win-score').innerHTML = "CURRENT WIN SCORE: <br><strong>" + maxScore + '</strong>';
-//     } else {
-//         alert("Type in a valid positive number");
-//     }
-// });
+document.querySelector('.btn-set-score').addEventListener('click', function() {
+    var scoreInput = document.querySelector('#score-input');
+    var newScoreValue = scoreInput.value;
+    if(!isNaN(newScoreValue)) {
+        maxScore = newScoreValue;
+        document.querySelector('#current-win-score').innerHTML = "CURRENT WIN SCORE: <br><strong>" + maxScore + '</strong>';
+    } else {
+        alert("Type in a valid positive number");
+    }
+});
 
-/******************************************************************************** */
-//more advanced objs and functions
-/******************************************************************************** */
 
 
 

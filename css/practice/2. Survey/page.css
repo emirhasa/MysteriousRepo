@@ -1,0 +1,78 @@
+body {
+    font-family: 'Baloo 2', Arial, cursive, sans-serif;
+    margin: auto;
+    background-position: center;
+    background-size:cover;
+    background-repeat: no-repeat;
+}
+
+#wrapper {
+    padding: 100px;
+    width: 1000px;
+    margin: auto;
+}
+
+#header {
+    text-align: center;
+}
+
+form {
+    padding: 0 100px 100px 100px;
+    max-width: 600px;   
+    margin: auto;
+}
+
+input {
+    font-family:'Baloo 2';
+    padding: 0px;
+}
+
+input[type=text] {
+    width: 90%;
+    border: 0px;
+    border-bottom: 2px solid rgb(65, 65, 65);
+    font-size: 1.5rem;
+    color: red;
+}
+
+label.input-label {
+
+}
+
+div {
+    box-sizing: border-box;
+}
+
+div.row {
+    margin: 4em;
+    text-align: center;
+}
+
+div.row::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
+div.col-left {
+    padding-right: 25px;
+    font-size: 1.5rem;
+}
+
+div.col-right {
+    padding-left: 25px;
+}
+
+@media only screen and (min-width:1000px) {
+    div.col-left {
+        float: left;
+        width: 25%;
+        text-align: left;
+
+    }
+    div.col-right {
+        float: left;
+        width: 75%;
+        text-align: left;
+    }
+}

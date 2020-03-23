@@ -1,0 +1,97 @@
+body {
+    margin: 0px;
+    color: rgb(30,30,30);
+}
+
+#title {
+    text-align: center;
+    padding:1.2rem;
+    font-size: 2.3rem;
+}
+
+#title h1{
+    font-weight:100;
+}
+
+#img-caption {
+    margin:1rem;
+    font-size: 1.2rem;
+    font-style: italic;
+}
+
+.content-div {
+    padding: 3rem;
+    margin-left:3rem;
+}
+
+.image-figure {
+    text-align: center;
+}
+
+.image-src {
+    box-shadow: 5px 5px 3px 1px black;
+    max-width:100%;
+}
+
+h2 {
+    margin-bottom: 0.5rem;
+}
+
+p.biography {
+    font-size: 1.5rem;
+    margin-bottom:3rem;
+    margin-top:0;
+    max-width: 40rem;
+    color:rgb(48, 48, 48)
+}
+
+#img-div {
+    padding:50px;
+    text-align: center;
+}
+
+.about {
+    margin-left:5.9rem;
+}
+
+.btn {
+    width:100%;
+    display:inline-block;
+    color: #4c4c4c;
+    max-width: 39rem;
+    text-align: center;
+    text-decoration: none;
+    font-size: 2rem;
+    text-transform: uppercase;
+    padding: 10px;
+    border-bottom: 2px solid;
+    transition: background-color 0.2s;
+}
+
+.btn:hover {
+    color: #ffffff;
+    background: #4c4c4c;
+}
+
+@media only screen and (min-width:1000px) {
+
+    .content-div {
+        margin-left:0;
+    }
+
+    .half-col {
+        float: left;
+        width: 50%;
+    }
+ 
+    #img-div {
+        text-align: right;
+        float:right;
+    }
+
+    .image-figure {
+        max-width:34rem;
+    }
+
+}
+

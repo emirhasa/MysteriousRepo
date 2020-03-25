@@ -1,0 +1,102 @@
+﻿body {
+    text-align: center;
+}
+
+input[type=text] {
+    width:49.5%;
+}
+
+.wrapper {
+    padding:30px;
+    margin:auto;
+    overflow:auto;
+}
+
+.btn {
+    display: inline-block;
+    padding: 10px;
+    text-decoration: none;
+    border: 2px solid black;
+    width:100px;
+    text-align: center;
+    color: darkslategray;
+}
+
+#startVideo, #stopVideo, #openVideo {
+    width:100%;
+    max-width:650px;
+}
+
+#sendButton {
+    margin-top:10px;
+    width:50%;
+}
+
+.btn:hover, .btn:active {
+    background: rgb(100, 100, 100);
+    color: white;
+}
+
+#video {
+    width: 98%;
+    height: 80%;
+    background: rgb(150, 150, 150);
+    border: 5px solid rgb(100, 100, 100);
+    max-width:640px;
+    max-height:480px;
+}
+
+.col-left {
+    float: left;
+    width: 1%;
+}
+
+.col-middle {
+    float:left;
+    width:45%;
+    text-align: left;
+    box-sizing: border-box;
+}
+
+.col-right {
+    float:right;
+    width:52%;
+    text-align:left;
+}
+
+.btn-forward {
+    margin-top:50px;
+}
+
+.btn-left {
+    position:absolute;
+    left:16%;
+    margin-top:16px;
+}
+
+.btn-right {
+    position:absolute;
+    left:30%;
+    margin-top:16px;
+}
+
+.command-button {
+    width:48px;
+    height:48px;
+}
+
+.div-cmd-forward {
+    text-align: center;
+}
+
+.div-cmd-leftright {
+    height: 80px;
+}
+
+.div-cmd-backward {
+    text-align: center;
+}
+
+
+
+

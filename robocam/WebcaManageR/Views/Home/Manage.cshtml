@@ -1,0 +1,61 @@
+﻿
+@{
+    ViewData["Title"] = "Streaming Client";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="~/css/site.css" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+<body>
+
+    <div class="wrapper">
+
+        <h2>You will see the camera stream here. You will send commands to the streaming client here.</h2>
+
+        <div class="col-left">
+            &nbsp;
+        </div>
+
+        <div class="col-middle">
+
+            <div style="text-align: center">
+                <input type="text" name="message" placeholder="Insert message" /><br />
+                <button id="sendButton" value="Send">Send</button>
+            </div>
+
+            <div class="cmd-btn div-cmd-forward">
+                <button class="btn btn-forward command-button" data-command="FORWARD"  value="Forward"><i class="material-icons md-48">arrow_upward</i></button>
+            </div>
+
+            <div class="cmd-btn div-cmd-leftright">
+                <button class="btn btn-left command-button" data-command="LEFT"  value="LEFT"><i class="material-icons md-48">arrow_back</i></button>
+                <button class="btn btn-right command-button" data-command="RIGHT"  value="RIGHT"><i class="material-icons md-48">arrow_forward</i></button>
+            </div>
+
+            <div class="cmd-btn div-cmd-backward">
+                <button class="btn btn-backward command-button" data-command="BACKWARD" value="BACKWARD"><i class="material-icons md-48">arrow_downward</i></button>
+            </div>
+
+        </div>
+
+        <div class="col-right">
+
+            <button class="btn" id="openVideo">GET STREAM</button>
+
+            <div class="video-container">
+                <img id="video" width="640" height="480">
+                </img>
+            </div>
+        </div>
+
+    </div>
+
+    <script src="~/js/signalr/dist/browser/signalr.js"></script>
+    <script src="~/js/manage.js"></script>
+
+</body>
+
+</html>

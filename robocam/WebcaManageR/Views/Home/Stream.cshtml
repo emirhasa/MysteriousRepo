@@ -1,0 +1,49 @@
+﻿
+@{
+    ViewData["Title"] = "Streaming Client";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="~/css/site.css" />
+</head>
+<body>
+
+    <div class="wrapper">
+
+        <h2>You will activate your camera here. You will see commands from the management client here.</h2>
+
+        <div class="col-left">
+            &nbsp;
+        </div>
+
+        <div class="col-middle">
+
+            Manager Commands: <br />
+            <div class="commands">
+
+            </div>
+        </div>
+
+        <div class="video-box col-right">
+
+            <div>
+                <button class="btn" id="startVideo">Fire up video</button><br />
+                <button class="btn" id="stopVideo">Pause video</button>
+            </div>
+
+            <div>
+                <video id="video">
+                </video>
+            </div>
+        </div>
+
+    </div>
+
+    <script src="~/js/signalr/dist/browser/signalr.js"></script>
+    <script src="~/js/stream.js"></script>
+
+</body>
+
+</html>

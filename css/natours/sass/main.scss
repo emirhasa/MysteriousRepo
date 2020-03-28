@@ -2,14 +2,15 @@
 @import "abstracts/mixins"; 
 @import "abstracts/variables";
 
-@import "base/animations";
-@import "base/base";
+@import "base/animations";    
+@import "base/base"; 
 @import "base/typography";
 @import "base/utilities";
 
-@import "components/buttons";  
-
-@import "pages/home";
+@import "components/buttons";   
+@import "components/composition";  
+  
+@import "pages/home";     
 
 @import "layout/header";  
 @import "layout/grid";     
@@ -18,11 +19,11 @@
 *,
 *::after,
 *::before {
-    margin: 0;
+    margin: 0;        
     padding: 0;
-    box-sizing: inherit;;
+    box-sizing: inherit;  
 }
-
+ 
 html {
     //just defines what 1 rem is so not in typography 
     font-size: 62.5%; 

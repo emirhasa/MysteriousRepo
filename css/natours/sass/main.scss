@@ -9,19 +9,25 @@
 
 @import "components/buttons";   
 @import "components/composition";  
+@import "components/feature-box";
+@import "components/card";      
+@import "components/story";   
+@import "components/bg-video";           
+@import "components/form";                                      
   
 @import "pages/home";     
 
-@import "layout/header";  
-@import "layout/grid";     
- 
-
+@import "layout/navigation";
+@import "layout/header";    
+@import "layout/footer";   
+@import "layout/grid";         
+    
 *,
-*::after,
+*::after,  
 *::before {
     margin: 0;        
     padding: 0;
-    box-sizing: inherit;  
+    box-sizing: inherit;     
 }
  
 html {
@@ -30,7 +36,8 @@ html {
 }
 
 body {
-    padding: 3rem;
-    box-sizing: border-box;
-}
-
+    padding: 3rem;    
+    box-sizing: border-box;  
+    position: relative;                 
+} 
+                           

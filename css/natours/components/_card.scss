@@ -57,15 +57,15 @@
         position: relative;
 
         &--1 {
-            background-image: linear-gradient(to right, $color-secondary-dark, $color-secondary-light), url(../img/nat-5.jpg);
+            background-image: linear-gradient(to right, $color-secondary-dark, $color-secondary-light), url(../img/nat-5-small.jpg);
         }
 
         &--2 {
-            background-image: linear-gradient(to right, $color-primary-dark, $color-primary-light), url(../img/nat-6.jpg);
+            background-image: linear-gradient(to right, $color-primary-dark, $color-primary-light), url(../img/nat-6-small.jpg);
         }
 
         &--3 {
-            background-image: linear-gradient(to right, $color-tertiary-dark, $color-tertiary-light), url(../img/nat-7.jpg);
+            background-image: linear-gradient(to right, $color-tertiary-dark, $color-tertiary-light), url(../img/nat-7-small.jpg);
         }
     }
 
@@ -96,6 +96,11 @@
 
     &__details {
         padding: 3rem;
+
+        @include respond(tab-port) {
+            padding: 0;
+        }
+        
         ul {
             list-style: none;
             width: 80%;
@@ -141,5 +146,53 @@
         &-value {
             font-size: 6rem;
         } 
+    }
+ 
+    @media only screen and (max-width: 56.25em),
+        only screen and (hover: none) {
+        height: auto;
+        border-radius:3px;
+        box-shadow: 0 1.5rem 4rem rgba($color-black, .15);
+        background-color: $color-white;
+
+        &__side {
+            height: auto;
+            position: relative;
+
+            &--front {
+                box-shadow: none;
+            }
+
+            &--back {
+                transform: rotateY(0);
+                clip-path: polygon(0 15%, 100% 0, 100% 100%, 0 100%);
+            }
+        }
+
+        &:hover &__side--front {
+            transform: rotateY(0);
+        }
+
+        //FRONT-SIDE STYLING
+        &__cta {
+            overflow: hidden;
+            position: relative;
+            top: 0%;
+            left: 0;
+            transform: translate(0);
+            width:100%;
+            padding: 7rem 4rem 4rem 4rem;
+        }
+
+        &__price {
+
+            &-box {
+                margin-bottom: 3rem;
+            }
+
+            &-value {
+                font-size: 6rem;
+            } 
+        }
     }
 }

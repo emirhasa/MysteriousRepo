@@ -13,31 +13,13 @@
 @import "components/card";      
 @import "components/story";   
 @import "components/bg-video";           
-@import "components/form";                                      
-  
+@import "components/form";     
+@import "components/popup";                                               
+           
 @import "pages/home";     
 
 @import "layout/navigation";
 @import "layout/header";    
 @import "layout/footer";   
 @import "layout/grid";         
-    
-*,
-*::after,  
-*::before {
-    margin: 0;        
-    padding: 0;
-    box-sizing: inherit;     
-}
- 
-html {
-    //just defines what 1 rem is so not in typography 
-    font-size: 62.5%; 
-}
-
-body {
-    padding: 3rem;    
-    box-sizing: border-box;  
-    position: relative;                 
-} 
-                           
+                                    

@@ -6,10 +6,9 @@
         
         <link href="https://fonts.googleapis.com/css?family=Lato:100,200,300,400,700,900" rel="stylesheet">
 
-        <link rel="stylesheet" href="css/icon-font.css">
+        <!-- <link rel="stylesheet" href="css/icon-font.css"> -->
         <link rel="stylesheet" href="css/style.css">
         <link rel="shortcut icon" type="image/png" href="img/favicon.png">
-        <link rel="stylesheet" href="css/icon-font.css">
         
         <title>Natours | Exciting tours for adventurous people</title>
     </head>
@@ -17,7 +16,9 @@
 
         <nav class="navigation">
             <input type="checkbox" class="navigation__checkbox" id="nav-toggle" />
-            <label for="nav-toggle" class="navigation__button">MENU</label>
+            <label for="nav-toggle" class="navigation__button">
+                <span class="navigation__icon">&nbsp;</span>
+            </label>
 
             <div class="navigation__background">
                 &nbsp;
@@ -46,7 +47,7 @@
                     <span class="heading-primary-sub">that's where life happens</span>
                 </h1>
 
-                <a href="#" class="btn btn--white btn--animated">Discover our tours</a>
+                <a href="#section-tours" class="btn btn--white btn--animated">Discover our tours</a>
             </div>
         </header>
 
@@ -74,9 +75,21 @@
                     </div>
                     <div class="col-1-of-2">
                         <div class="composition">
-                            <img src="img/nat-1-large.jpg" alt="Photo 1" class="composition__photo composition__photo--p1">
-                            <img src="img/nat-2-large.jpg" alt="Photo 2" class="composition__photo composition__photo--p2">
-                            <img src="img/nat-3-large.jpg" alt="Photo 3" class="composition__photo composition__photo--p3">
+                            <img srcset="img/nat-1.jpg 300w, img/nat-1-large.jpg 1000w"
+                                 sizes="(max.width: 900px) 20vw, (max-width: 600px) 30vw, 300px"
+                                 alt="Photo 1" class="composition__photo composition__photo--p1"
+                                 src="img/nat-1-large.jpg">
+
+                            <img srcset="img/nat-2.jpg 300w, img/nat-2-large.jpg 1000w"
+                            sizes="(max.width: 900px) 20vw, (max-width: 600px) 30vw, 300px"
+                            alt="Photo 1" class="composition__photo composition__photo--p2"
+                            src="img/nat-2-large.jpg">
+
+                            <img srcset="img/nat-3.jpg 300w, img/nat-3-large.jpg 1000w"
+                            sizes="(max.width: 900px) 20vw, (max-width: 600px) 30vw, 300px"
+                            alt="Photo 1" class="composition__photo composition__photo--p3"
+                            src="img/nat-3-large.jpg"> 
+
                         </div>
                     </div>
                 </div>
@@ -115,7 +128,7 @@
                         <div class="feature-box">
                             <i class="feature-box__icon icon-basic-heart icon-gradient"></i>
                             <h3 class="heading-tertiary u-margin-bottom-small">Live a healthier life</h3>
-                            <p class="feature-box__text">
+                            <p class="feature-box__text"> 
                                 Lorem ipsum dolor, sit amet consectetur adipisicing elit. Atque perferendis aut suscipit optio, enim saepe laborum, ea maiores quidem alias doloremque blanditiis nostrum ad eligendi fuga id quibusdam rerum sunt.
                             </p>
                         </div>
@@ -123,7 +136,7 @@
                 </div>
             </section>
 
-            <section class="section-tours">
+            <section class="section-tours" id="section-tours">
 
                 <div class="u-center-text u-margin-bottom-big">
                     <h2 class="heading-secondary">
@@ -156,7 +169,7 @@
                                     <p class="card__price-only">Only</p>
                                     <p class="card__price-value">$297</p>
                                 </div>
-                                <a href="#" class="btn btn--white">Book now!</a>
+                                <a href="#popup" class="btn btn--white">Book now!</a>
                             </div>
                         </div>
                     </div>
@@ -184,7 +197,7 @@
                                     <p class="card__price-only">Only</p>
                                     <p class="card__price-value">$457</p>
                                 </div>
-                                <a href="#" class="btn btn--white">Book now!</a>
+                                <a href="#popup" class="btn btn--white">Book now!</a>
                             </div>
                         </div>
                     </div>
@@ -212,7 +225,7 @@
                                     <p class="card__price-only">Only</p>
                                     <p class="card__price-value">$199</p>
                                 </div>
-                                <a href="#" class="btn btn--white">Book now!</a>
+                                <a href="#popup" class="btn btn--white">Book now!</a>
                             </div>
                         </div>
                     </div>
@@ -240,7 +253,8 @@
                 <div class="row">
                     <div class="story">
                         <figure class="story__shape">
-                            <img class="story__img" src="img/nat-8.jpg" alt="Person on a tour">
+                            <source srcset="img/nat-8-medium.jpg" media="(max-width: 75rem)">
+                            <img class="story__img" srcset="img/nat-8-large.jpg 2x, img/nat-8-medium.jpg 1x" src="img/nat-8-medium.jpg" alt="Person on a tour">
                             <figcaption class="story__caption">Anna Smith</figcaption>
                         </figure>
                         <div class="story__text">
@@ -255,7 +269,8 @@
 
                     <div class="story">
                         <figure class="story__shape">
-                            <img class="story__img" src="img/nat-9.jpg" alt="Person on a tour">
+                            <source srcset="img/nat-8-medium.jpg" media="(max-width: 75rem)">
+                            <img class="story__img" srcset="img/nat-9-large.jpg 2x, img/nat-9-medium.jpg 1x" src="img/nat-9-medium.jpg" alt="Person on a tour">
                             <figcaption class="story__caption">Joe Dohn</figcaption>
                         </figure>
                         <div class="story__text">
@@ -317,11 +332,15 @@
                     </div>
                 </div>
             </section>
+ 
         </main>
 
         <footer class="footer">
             <div class="footer__logo-box">
-                <img src="img/logo-green-2x.png" alt="">
+                <picture class="footer__logo">
+                    <source srcset="img/logo-green-small-1x.png 1x, img/logo-green-small-2x.png" media="(max-width: 37.5rem)">
+                    <img srcset="img/logo-green-1x.png 1x, img/logo-green-2x.png 2x" src="img/logo-green-2x.png" alt="Full logo">
+                </picture>
             </div>
 
             <div class="row">
@@ -353,5 +372,33 @@
                 </div>
             </div>
         </footer>
+
+        <div class="popup" id="popup">
+            <div class="popup__content">
+                <div class="popup__left">
+                    <figure>
+                        <source src="img/nat-8-medium.jpg">
+                        <source src="img/nat-8-large.jpg" media="(min-width:75rem">
+                        <img src="img/nat-8-medium.jpg" alt="Tour photo" class="popup__image">
+                    </figure>
+                    <figure class="popup__image">
+                        <source src="img/nat-9-medium.jpg">
+                        <source src="img/nat-9-large.jpg" media="(min-width:75rem)">
+                        <img src="img/nat-9-medium.jpg" alt="Tour photo" class="popup__image">
+                    </figure>
+                </div>
+                <div class="popup__right">
+                    <a href="#section-tours" class="popup__close">&times;</a>
+                    <h2 class="heading-secondary u-margin-bottom-small">Start booking now</h2>
+                    <h3 class="heading-tertiary u-margin-bottom-small">Important &ndash; Please read these things before booking</h3>
+                    <p class="popup__text">
+                        In hac habitasse platea dictumst. Pellentesque lobortis placerat diam, vel commodo lorem pharetra a. Nullam vehicula justo sed venenatis congue. In volutpat odio ut augue maximus, vitae ultrices tortor imperdiet. Morbi venenatis interdum nisl, eu venenatis ligula placerat a. Aenean convallis ex ipsum, ut dictum sapien porta non. Nam ornare dui a metus iaculis, nec feugiat leo eleifend. Cras maximus tortor vel dictum ultrices. Curabitur pharetra sollicitudin aliquet. Duis sagittis sapien sed sem dictum laoreet. Proin malesuada non magna quis gravida.
+
+                        Aenean vel vehicula magna. Etiam urna nulla, elementum in mauris facilisis, sodales dapibus metus. Maecenas nec vestibulum felis. Vivamus ut erat eleifend, congue mi ac, imperdiet odio. Integer congue lorem id mollis auctor. Sed non mi semper, egestas nulla et, tempus mauris. Ut accumsan nulla sit amet felis varius pretium. Nam eu ipsum sit amet erat vehicula molestie eget non metus. In hac habitasse platea dictumst. Integer nisl tortor, pellentesque id mauris tincidunt, sodales tincidunt massa. 
+                    </p>
+                    <a href="#" class="btn btn--green">Book now</a>
+                </div>
+            </div>
+        </div>
     </body>
 </html>
